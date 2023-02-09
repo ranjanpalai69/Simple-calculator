@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPLE-CALCULATOR</title>
+    <style>
+        h1{
+            color: teal;
+            text-align: center;
+        }
+        #container{
+            height: auto;
+            width: 400px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 30px 15px;
+            border-radius:10px;
+            box-shadow: 0px 0px 66px 6px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        #display{
+            box-sizing: border-box;
+            height:60px;
+            width: 90%;
+            margin:auto ;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-radius:10px;
+            box-shadow: 0px 0px 66px 6px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #keyboard{
+            height: auto;
+            width: 90%;
+            margin: auto;
+            margin-top: 20;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(4,80px);
+            gap: 20px;
+            
+        }
+        #keyboard>div{
+            border-radius:10px;
+            box-sizing: border-box;
+            padding: 40% 40%;
+            box-shadow: 0px 0px 66px 6px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+            font-size: larger;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+        .black{
+            background-color: black;
+            color: white;
+        }
+        .red{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <div id="container">
+        <div id="display">
+
+        </div>
+        <div id="keyboard">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div class="black">+</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div class="black">-</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div class="black">*</div>
+            <div class="red">C</div>
+            <div>0</div>
+            <div class="black">=</div>
+            <div class="black">/</div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+   let keys=document.querySelectorAll("#keyboard>div");
+   for(let i=0;i<keys.length;i++){
+    keys[i].addEventListener("click",myCalc);
+   }
+   let bag="";
+function myCalc(event){
+  let targetVal=event.target.innerText;
+if(targetVal==="C"){
+    document.getElementById("display").innerText="";
+    bag="";
+}
+else if(targetVal==="="){
+if(bag){
+    document.getElementById("display").innerText=eval(bag);
+   bag=document.getElementById("display").innerText;
+}
+else{
+    document.getElementById("display").innerText="0";
+   bag=document.getElementById("display").innerText;
+}
+}
+else{
+    bag+=targetVal;
+    document.getElementById("display").innerText=bag;
+}
+
+}
+
+</script>
